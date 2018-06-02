@@ -44,6 +44,7 @@ public class Main extends javax.swing.JFrame {
         jMenuCadastro = new javax.swing.JMenu();
         jMenuItemCliente = new javax.swing.JMenuItem();
         jMenuItemEquipamento = new javax.swing.JMenuItem();
+        jMenuItemCiclos = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemTecnicoExec = new javax.swing.JMenuItem();
         jMenuItemRespTecnico = new javax.swing.JMenuItem();
@@ -107,6 +108,9 @@ public class Main extends javax.swing.JFrame {
 
         jMenuItemEquipamento.setText("Equipamento");
         jMenuCadastro.add(jMenuItemEquipamento);
+
+        jMenuItemCiclos.setText("Ciclos");
+        jMenuCadastro.add(jMenuItemCiclos);
         jMenuCadastro.add(jSeparator2);
 
         jMenuItemTecnicoExec.setText("Técnico Executante");
@@ -223,6 +227,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenu jMenuInstrumentos;
     private javax.swing.JMenuItem jMenuItemAbrirQ;
+    private javax.swing.JMenuItem jMenuItemCiclos;
     private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemConfig;
     private javax.swing.JMenuItem jMenuItemEquipamento;

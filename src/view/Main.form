@@ -49,6 +49,11 @@
                 <Property name="text" type="java.lang.String" value="Equipamento"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCiclos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ciclos"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTecnicoExec">
