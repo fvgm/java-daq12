@@ -5,17 +5,22 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import util.WindowManager;
+
 /**
  *
  * @author fernando_2
  */
 public class Main extends javax.swing.JFrame {
+    WindowManager windowManager; // gerenciador de janelas
 
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
+        windowManager = new WindowManager(jDesktopPane1);
     }
 
     /**
@@ -31,21 +36,24 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuQualificacao = new javax.swing.JMenu();
+        jMenuItemNovaQ = new javax.swing.JMenuItem();
+        jMenuItemAbrirQ = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItemSair = new javax.swing.JMenuItem();
+        jMenuCadastro = new javax.swing.JMenu();
+        jMenuItemCliente = new javax.swing.JMenuItem();
+        jMenuItemEquipamento = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemTecnicoExec = new javax.swing.JMenuItem();
+        jMenuItemRespTecnico = new javax.swing.JMenuItem();
+        jMenuRelatorio = new javax.swing.JMenu();
+        jMenuInstrumentos = new javax.swing.JMenu();
+        jMenuItemConfig = new javax.swing.JMenuItem();
+        jMenuItemVis = new javax.swing.JMenuItem();
+        jMenuAjuda = new javax.swing.JMenu();
+        jMenuItemManual = new javax.swing.JMenuItem();
+        jMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DAQ12");
@@ -68,52 +76,69 @@ public class Main extends javax.swing.JFrame {
         jTextArea1.setRows(3);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jMenu1.setText("Qualificação");
+        jMenuQualificacao.setText("Qualificação");
 
-        jMenuItem1.setText("Nova Qualificação");
-        jMenu1.add(jMenuItem1);
+        jMenuItemNovaQ.setText("Nova Qualificação");
+        jMenuQualificacao.add(jMenuItemNovaQ);
 
-        jMenuItem2.setText("Abrir Qualificação");
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator1);
+        jMenuItemAbrirQ.setText("Abrir Qualificação");
+        jMenuQualificacao.add(jMenuItemAbrirQ);
+        jMenuQualificacao.add(jSeparator1);
 
-        jMenuItem3.setText("Sair");
-        jMenu1.add(jMenuItem3);
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuQualificacao.add(jMenuItemSair);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuQualificacao);
 
-        jMenu2.setText("Cadastro");
+        jMenuCadastro.setText("Cadastro");
 
-        jMenuItem4.setText("Cliente");
-        jMenu2.add(jMenuItem4);
+        jMenuItemCliente.setText("Cliente");
+        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemCliente);
 
-        jMenuItem5.setText("Equipamento");
-        jMenu2.add(jMenuItem5);
+        jMenuItemEquipamento.setText("Equipamento");
+        jMenuCadastro.add(jMenuItemEquipamento);
+        jMenuCadastro.add(jSeparator2);
 
-        jMenuBar1.add(jMenu2);
+        jMenuItemTecnicoExec.setText("Técnico Executante");
+        jMenuCadastro.add(jMenuItemTecnicoExec);
 
-        jMenu3.setText("Relatório");
-        jMenuBar1.add(jMenu3);
+        jMenuItemRespTecnico.setText("Responsável Técnico");
+        jMenuCadastro.add(jMenuItemRespTecnico);
 
-        jMenu5.setText("Instrumentos");
+        jMenuBar1.add(jMenuCadastro);
 
-        jMenuItem8.setText("Configurar");
-        jMenu5.add(jMenuItem8);
+        jMenuRelatorio.setText("Relatório");
+        jMenuBar1.add(jMenuRelatorio);
 
-        jMenuItem9.setText("Visualização");
-        jMenu5.add(jMenuItem9);
+        jMenuInstrumentos.setText("Instrumentos");
 
-        jMenuBar1.add(jMenu5);
+        jMenuItemConfig.setText("Configurar");
+        jMenuInstrumentos.add(jMenuItemConfig);
 
-        jMenu4.setText("Ajuda");
+        jMenuItemVis.setText("Visualização");
+        jMenuInstrumentos.add(jMenuItemVis);
 
-        jMenuItem6.setText("Manual de Usuário");
-        jMenu4.add(jMenuItem6);
+        jMenuBar1.add(jMenuInstrumentos);
 
-        jMenuItem7.setText("Sobre...");
-        jMenu4.add(jMenuItem7);
+        jMenuAjuda.setText("Ajuda");
 
-        jMenuBar1.add(jMenu4);
+        jMenuItemManual.setText("Manual de Usuário");
+        jMenuAjuda.add(jMenuItemManual);
+
+        jMenuItemSobre.setText("Sobre...");
+        jMenuAjuda.add(jMenuItemSobre);
+
+        jMenuBar1.add(jMenuAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -134,6 +159,27 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        String[] options = {"Sim", "Não"};
+        
+        int i = JOptionPane.showOptionDialog(null,
+                "Deseja mesmo sair?", 
+                "Confirmação", 
+                JOptionPane.DEFAULT_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, 
+                null, 
+                options, 
+                options[1]);
+        
+        if (i==0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
+
+    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
+        windowManager.openWindow(JInternalFrameCliente.getInstance());
+    }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,23 +218,26 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenuAjuda;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JMenu jMenuInstrumentos;
+    private javax.swing.JMenuItem jMenuItemAbrirQ;
+    private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemConfig;
+    private javax.swing.JMenuItem jMenuItemEquipamento;
+    private javax.swing.JMenuItem jMenuItemManual;
+    private javax.swing.JMenuItem jMenuItemNovaQ;
+    private javax.swing.JMenuItem jMenuItemRespTecnico;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenuItem jMenuItemSobre;
+    private javax.swing.JMenuItem jMenuItemTecnicoExec;
+    private javax.swing.JMenuItem jMenuItemVis;
+    private javax.swing.JMenu jMenuQualificacao;
+    private javax.swing.JMenu jMenuRelatorio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
