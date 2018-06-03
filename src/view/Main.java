@@ -46,11 +46,13 @@ public class Main extends javax.swing.JFrame {
         jMenuItemEquipamento = new javax.swing.JMenuItem();
         jMenuItemCiclos = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItemTecnicoExec = new javax.swing.JMenuItem();
+        jMenuItemLogotipo = new javax.swing.JMenuItem();
         jMenuItemRespTecnico = new javax.swing.JMenuItem();
+        jMenuItemTecnicoExec = new javax.swing.JMenuItem();
+        jMenuItemPOP = new javax.swing.JMenuItem();
         jMenuRelatorio = new javax.swing.JMenu();
-        jMenuInstrumentos = new javax.swing.JMenu();
-        jMenuItemConfig = new javax.swing.JMenuItem();
+        jMenuConfig = new javax.swing.JMenu();
+        jMenuItemGerla = new javax.swing.JMenuItem();
         jMenuItemVis = new javax.swing.JMenuItem();
         jMenuAjuda = new javax.swing.JMenu();
         jMenuItemManual = new javax.swing.JMenuItem();
@@ -113,26 +115,32 @@ public class Main extends javax.swing.JFrame {
         jMenuCadastro.add(jMenuItemCiclos);
         jMenuCadastro.add(jSeparator2);
 
-        jMenuItemTecnicoExec.setText("Técnico Executante");
-        jMenuCadastro.add(jMenuItemTecnicoExec);
+        jMenuItemLogotipo.setText("Logotipo");
+        jMenuCadastro.add(jMenuItemLogotipo);
 
         jMenuItemRespTecnico.setText("Responsável Técnico");
         jMenuCadastro.add(jMenuItemRespTecnico);
+
+        jMenuItemTecnicoExec.setText("Técnico Executante");
+        jMenuCadastro.add(jMenuItemTecnicoExec);
+
+        jMenuItemPOP.setText("Procedimentos (POPs)");
+        jMenuCadastro.add(jMenuItemPOP);
 
         jMenuBar1.add(jMenuCadastro);
 
         jMenuRelatorio.setText("Relatório");
         jMenuBar1.add(jMenuRelatorio);
 
-        jMenuInstrumentos.setText("Instrumentos");
+        jMenuConfig.setText("Configurações");
 
-        jMenuItemConfig.setText("Configurar");
-        jMenuInstrumentos.add(jMenuItemConfig);
+        jMenuItemGerla.setText("Geral");
+        jMenuConfig.add(jMenuItemGerla);
 
         jMenuItemVis.setText("Visualização");
-        jMenuInstrumentos.add(jMenuItemVis);
+        jMenuConfig.add(jMenuItemVis);
 
-        jMenuBar1.add(jMenuInstrumentos);
+        jMenuBar1.add(jMenuConfig);
 
         jMenuAjuda.setText("Ajuda");
 
@@ -225,14 +233,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuAjuda;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
-    private javax.swing.JMenu jMenuInstrumentos;
+    private javax.swing.JMenu jMenuConfig;
     private javax.swing.JMenuItem jMenuItemAbrirQ;
     private javax.swing.JMenuItem jMenuItemCiclos;
     private javax.swing.JMenuItem jMenuItemCliente;
-    private javax.swing.JMenuItem jMenuItemConfig;
     private javax.swing.JMenuItem jMenuItemEquipamento;
+    private javax.swing.JMenuItem jMenuItemGerla;
+    private javax.swing.JMenuItem jMenuItemLogotipo;
     private javax.swing.JMenuItem jMenuItemManual;
     private javax.swing.JMenuItem jMenuItemNovaQ;
+    private javax.swing.JMenuItem jMenuItemPOP;
     private javax.swing.JMenuItem jMenuItemRespTecnico;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemSobre;
