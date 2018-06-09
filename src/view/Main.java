@@ -20,6 +20,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH); // iniciar maximizado
         windowManager = new WindowManager(jDesktopPane1);
     }
 
@@ -82,6 +83,11 @@ public class Main extends javax.swing.JFrame {
         jMenuQualificacao.setText("Qualificação");
 
         jMenuItemNovaQ.setText("Nova Qualificação");
+        jMenuItemNovaQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemNovaQActionPerformed(evt);
+            }
+        });
         jMenuQualificacao.add(jMenuItemNovaQ);
 
         jMenuItemAbrirQ.setText("Abrir Qualificação");
@@ -192,6 +198,10 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
         windowManager.openWindow(JInternalFrameCliente.getInstance());
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
+
+    private void jMenuItemNovaQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovaQActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemNovaQActionPerformed
 
     /**
      * @param args the command line arguments
