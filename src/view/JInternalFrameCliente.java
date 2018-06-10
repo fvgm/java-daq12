@@ -60,7 +60,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         contatoTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        setorTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         emailTextField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -99,7 +99,6 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
         jLabel1.setText("ID:");
 
         idTextField.setEditable(false);
-        idTextField.setText("0001");
         idTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idTextFieldActionPerformed(evt);
@@ -108,11 +107,8 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Nome:");
 
-        nomeTextField.setText("Associação Beneficente Bom Samaritano - Hospital Santa Rita S/A");
-
         jLabel3.setText("CNPJ:");
 
-        cnpjTextField.setText("12.123.505/0001-56");
         cnpjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cnpjTextFieldActionPerformed(evt);
@@ -121,55 +117,41 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
 
         jLabel4.setText("IE:");
 
-        ieTextField.setText("123456789-123");
-
         jLabel5.setText("Telefone:");
-
-        telTextField.setText("(044) 3031-3183");
 
         jLabel7.setText("Contato:");
 
-        contatoTextField.setText("Sr. Rodinei Blasques");
-
         jLabel8.setText("Setor:");
-
-        jTextField8.setText("Central de Materiais ");
 
         jLabel9.setText("Email:");
 
-        emailTextField.setText("engenharia@hospar.com.br");
-
         jLabel10.setText("Ramal");
-
-        ramalTextField.setText("jTextField10");
 
         jLabel6.setText("Endereço:");
 
-        enderecoTextField.setText("Av. Carlos Correia Borges");
-
         jLabel12.setText("Bairro:");
-
-        bairroTextField.setText("Jardim Aclimação");
-
-        cepTextField.setText("87020-210");
 
         jLabel13.setText("CEP:");
 
         jLabel14.setText("Cidade:");
 
-        cidadeTextField.setText("Cruzeiro do Sul");
-
-        ufTextField.setText("PR");
-
         jLabel15.setText("UF:");
-
-        numeroTextField.setText("3178");
 
         jLabel11.setText("Número:");
 
         fecharButton.setText("Fechar");
+        fecharButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecharButtonActionPerformed(evt);
+            }
+        });
 
         limparButton.setText("Limpar");
+        limparButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparButtonActionPerformed(evt);
+            }
+        });
 
         salvarButton.setText("Salvar");
         salvarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +207,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
                                 .addContainerGap())
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(setorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,7 +290,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contatoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(setorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -442,22 +424,47 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
         Cliente cliente = new Cliente(nomeTextField.getText(), 
                 cnpjTextField.getText(), ieTextField.getText(), 
                 telTextField.getText(), ramalTextField.getText(), 
-                contatoTextField.getText(), emailTextField.getText(), 
-                enderecoTextField.getText(), 
-                numeroTextField.getText(), 
-                bairroTextField.getText(), 
-                cepTextField.getText(),
-                ufTextField.getText(), 
+                contatoTextField.getText(), setorTextField.getText(),
+                emailTextField.getText(), enderecoTextField.getText(), 
+                numeroTextField.getText(), bairroTextField.getText(), 
+                cepTextField.getText(), ufTextField.getText(), 
                 cidadeTextField.getText());
         
         if (clienteDAO.add(cliente) == true) {
             JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");
+            this.clearAllTextFields();
         } else {
             JOptionPane.showMessageDialog(null, "Falha ao salvar...");
         }
         
     }//GEN-LAST:event_salvarButtonActionPerformed
 
+    private void fecharButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharButtonActionPerformed
+        this.dispose(); // fecha o internal frame.
+    }//GEN-LAST:event_fecharButtonActionPerformed
+
+    private void limparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparButtonActionPerformed
+        clearAllTextFields();
+      
+    }//GEN-LAST:event_limparButtonActionPerformed
+
+    private void clearAllTextFields() {
+        idTextField.setText("");
+        nomeTextField.setText(""); 
+        cnpjTextField.setText("");
+        ieTextField.setText("");
+        telTextField.setText("");
+        ramalTextField.setText("");
+        contatoTextField.setText("");
+        setorTextField.setText("");
+        emailTextField.setText("");
+        enderecoTextField.setText("");
+        numeroTextField.setText("");
+        bairroTextField.setText("");
+        cepTextField.setText("");
+        cidadeTextField.setText("");
+        ufTextField.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairroTextField;
@@ -497,12 +504,12 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JButton limparButton;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JTextField numeroTextField;
     private javax.swing.JTextField ramalTextField;
     private javax.swing.JButton salvarButton;
+    private javax.swing.JTextField setorTextField;
     private javax.swing.JTextField telTextField;
     private javax.swing.JTextField ufTextField;
     // End of variables declaration//GEN-END:variables

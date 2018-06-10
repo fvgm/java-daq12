@@ -10,9 +10,10 @@ package model;
  * @author fernando_2
  */
 public class Cliente {
+
     private int id;
-    private String nome, cnpj, ie, telefone, ramal, contato, email, endereco, 
-            numero, bairro, cep, estado, cidade;
+    private String nome, cnpj, ie, telefone, ramal, contato, setor, email, 
+            endereco, numero, bairro, cep, estado, cidade;
     
     public Cliente (String nome, 
                     String cnpj, 
@@ -20,6 +21,7 @@ public class Cliente {
                     String telefone, 
                     String ramal, 
                     String contato, 
+                    String setor,
                     String email, 
                     String endereco, 
                     String numero, 
@@ -34,6 +36,7 @@ public class Cliente {
         this.telefone = telefone;
         this.ramal = ramal;
         this.contato = contato;
+        this.setor = setor;
         this.email = email;
         this.endereco = endereco;
         this.numero = numero;
@@ -132,6 +135,20 @@ public class Cliente {
      */
     public void setContato(String contato) {
         this.contato = contato;
+    }
+
+    /**
+     * @return the setor
+     */
+    public String getSetor() {
+        return setor;
+    }
+
+    /**
+     * @param setor the setor to set
+     */
+    public void setSetor(String setor) {
+        this.setor = setor;
     }
 
     /**

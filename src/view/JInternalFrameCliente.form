@@ -107,7 +107,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextField8" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                          <Component id="setorTextField" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
                                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -215,7 +215,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="contatoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="setorTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -262,7 +262,6 @@
             <Component class="javax.swing.JTextField" name="idTextField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="text" type="java.lang.String" value="0001"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idTextFieldActionPerformed"/>
@@ -274,9 +273,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="nomeTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Associa&#xe7;&#xe3;o Beneficente Bom Samaritano - Hospital Santa Rita S/A"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -284,9 +280,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cnpjTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="12.123.505/0001-56"/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cnpjTextFieldActionPerformed"/>
               </Events>
@@ -297,9 +290,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="ieTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="123456789-123"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -307,9 +297,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="telTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="(044) 3031-3183"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -317,19 +304,13 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="contatoTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sr. Rodinei Blasques"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Setor:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField8">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Central de Materiais "/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="setorTextField">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
@@ -337,9 +318,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="emailTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="engenharia@hospar.com.br"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
@@ -347,9 +325,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="ramalTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField10"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -357,9 +332,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="enderecoTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Av. Carlos Correia Borges"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
@@ -367,14 +339,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="bairroTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Jardim Aclima&#xe7;&#xe3;o"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cepTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="87020-210"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
@@ -387,14 +353,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cidadeTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cruzeiro do Sul"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="ufTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="PR"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
@@ -402,9 +362,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="numeroTextField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3178"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
@@ -415,11 +372,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fechar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fecharButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="limparButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Limpar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limparButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="salvarButton">
               <Properties>

@@ -7,6 +7,7 @@ package view;
 
 import factory.ConnectionFactory;
 import java.sql.Connection;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import util.WindowManager;
@@ -66,6 +67,11 @@ public class Main extends javax.swing.JFrame {
         setTitle("DAQ12");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(1000, 700));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -182,18 +188,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
-        String[] options = {"Sim", "Não"};
-        
-        int i = JOptionPane.showOptionDialog(null,
-                "Deseja mesmo sair?", 
-                "Confirmação", 
-                JOptionPane.DEFAULT_OPTION, 
-                JOptionPane.QUESTION_MESSAGE, 
-                null, 
-                options, 
-                options[1]);
-        
-        if (i==0) {
+        if (promptBeforeExiting() == true) {
             System.exit(0);
         }
     }//GEN-LAST:event_jMenuItemSairActionPerformed
@@ -205,6 +200,14 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItemNovaQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovaQActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemNovaQActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        if (promptBeforeExiting() == true)     {
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        } else {       
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);  
+       }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -240,6 +243,25 @@ public class Main extends javax.swing.JFrame {
                 new Main().setVisible(true);
             }
         });
+    }
+    
+    private Boolean promptBeforeExiting() {
+        String[] options = {"Sim", "Não"};
+        
+        int i = JOptionPane.showOptionDialog(null,
+                "Deseja mesmo sair?", 
+                "Confirmação", 
+                JOptionPane.DEFAULT_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, 
+                null, 
+                options, 
+                options[1]);
+        
+        if (i==0) {
+            return true;
+        } else {
+            return false;
+        }    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
