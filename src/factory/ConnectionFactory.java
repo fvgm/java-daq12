@@ -16,9 +16,8 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     
     String url = "jdbc:sqlite:database.db";
-    //String user = "root";
-    //String pass = "root";
     
+   
     public Connection getConnection() {
         try {
             return DriverManager.getConnection(url);

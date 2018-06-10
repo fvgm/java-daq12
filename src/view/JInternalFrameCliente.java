@@ -5,6 +5,10 @@
  */
 package view;
 
+import dao.ClienteDAO;
+import javax.swing.JOptionPane;
+import model.Cliente;
+
 /**
  *
  * @author FernandoMagro
@@ -13,6 +17,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
     
      // itens necessários para o WindowManager
     private static JInternalFrameCliente frameCliente;
+    ClienteDAO clienteDAO;
     
     public static JInternalFrameCliente getInstance() {
         if (frameCliente == null) {
@@ -26,6 +31,8 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
      */
     public JInternalFrameCliente() {
         System.out.println("novo objeto instanciado.");
+        clienteDAO = new ClienteDAO();
+        
         initComponents();
     }
 
@@ -165,6 +172,11 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
         limparButton.setText("Limpar");
 
         salvarButton.setText("Salvar");
+        salvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -425,6 +437,26 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
     private void idTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idTextFieldActionPerformed
+
+    private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
+        Cliente cliente = new Cliente(nomeTextField.getText(), 
+                cnpjTextField.getText(), ieTextField.getText(), 
+                telTextField.getText(), ramalTextField.getText(), 
+                contatoTextField.getText(), emailTextField.getText(), 
+                enderecoTextField.getText(), 
+                numeroTextField.getText(), 
+                bairroTextField.getText(), 
+                cepTextField.getText(),
+                ufTextField.getText(), 
+                cidadeTextField.getText());
+        
+        if (clienteDAO.add(cliente) == true) {
+            JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao salvar...");
+        }
+        
+    }//GEN-LAST:event_salvarButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
