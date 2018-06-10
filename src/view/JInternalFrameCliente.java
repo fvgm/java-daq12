@@ -97,6 +97,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setResizable(true);
         setTitle("Cadastro de Clientes");
+        setPreferredSize(new java.awt.Dimension(800, 345));
 
         jLabel1.setText("ID:");
 
@@ -463,6 +464,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DefaultTableModel dtm = new ClienteDAO().getData();
         jTable1.setModel(dtm);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(30);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void clearAllTextFields() {
