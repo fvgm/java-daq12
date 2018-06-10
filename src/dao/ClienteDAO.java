@@ -8,7 +8,10 @@ package dao;
 import factory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 
 /**
@@ -56,6 +59,60 @@ public class ClienteDAO {
         
         return false;        
 
+    }
+    
+    public DefaultTableModel getData() {
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.addColumn("ID");
+        dtm.addColumn("Nome");
+        dtm.addColumn("CNPJ");
+        dtm.addColumn("IE");
+        dtm.addColumn("Telefone");
+        dtm.addColumn("Ramal");
+        dtm.addColumn("Contato");
+        dtm.addColumn("Setor");
+        dtm.addColumn("Email");
+        dtm.addColumn("Endereço");
+        dtm.addColumn("Número");
+        dtm.addColumn("Bairro");
+        dtm.addColumn("CEP");
+        dtm.addColumn("Estado");
+        dtm.addColumn("Cidade");
+        
+        String sql = "SELECT * FROM clientes";
+        
+        try {
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            
+            while (rs.next()) {
+                dtm.addRow(new String[]{
+                            rs.getString("id"), 
+                            rs.getString("nome"), 
+                            rs.getString("cnpj"), 
+                            rs.getString("ie"), 
+                            rs.getString("telefone"), 
+                            rs.getString("ramal"), 
+                            rs.getString("contato"), 
+                            rs.getString("setor"), 
+                            rs.getString("email"), 
+                            rs.getString("endereco"), 
+                            rs.getString("numero"), 
+                            rs.getString("bairro"), 
+                            rs.getString("cep"), 
+                            rs.getString("estado"), 
+                            rs.getString("cidade"), 
+                             });
+            }
+            
+            return dtm;
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        return null;
+  
     }
     
 }

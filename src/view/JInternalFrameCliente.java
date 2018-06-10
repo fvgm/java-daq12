@@ -7,6 +7,7 @@ package view;
 
 import dao.ClienteDAO;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 
 /**
@@ -90,6 +91,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
         jTextField16 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -349,6 +351,13 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
 
         jTextField17.setText("jTextField17");
 
+        jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -356,9 +365,11 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 303, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton6)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5)
@@ -392,7 +403,8 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(jButton6)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -448,6 +460,11 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
       
     }//GEN-LAST:event_limparButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DefaultTableModel dtm = new ClienteDAO().getData();
+        jTable1.setModel(dtm);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void clearAllTextFields() {
         idTextField.setText("");
         nomeTextField.setText(""); 
@@ -477,6 +494,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton fecharButton;
     private javax.swing.JTextField idTextField;
     private javax.swing.JTextField ieTextField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
