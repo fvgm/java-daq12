@@ -7,7 +7,7 @@ package util;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -16,23 +16,22 @@ import java.util.Properties;
  * @author fernando_2
  */
 public class PropertiesManager {
-    Properties props = new Properties();
-    FileInputStream fis;
-    FileOutputStream fos;
+    Properties props;
+    String fileTitle;
     
     public PropertiesManager(String fileName) throws FileNotFoundException, IOException {
-         fis = new FileInputStream(fileName);
-         fos = new FileOutputStream(fileName);
-         props.load(fis);
+        this.fileTitle = fileName;
+         props = new Properties();
+         props.load(new FileInputStream(fileName));
     }
     
-    public String getSerialPort() {
-        return props.getProperty("prop.serialPort");
+    public String getProperty(String property) {
+        return props.getProperty(property);
     }
     
-    public void setSerialPort(String portName) throws IOException {
-        props.setProperty("prop.serialPort", portName);
-        props.store(fos, "Propriedades");
+    public void setProperty(String property, String value) throws IOException {
+        props.setProperty(property, value);
+        props.store(new FileWriter("config.properties"), fileTitle);
     }
     
     

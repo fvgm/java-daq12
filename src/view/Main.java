@@ -5,12 +5,11 @@
  */
 package view;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import util.PropertiesManager;
 import util.WindowManager;
 
 /**
@@ -19,7 +18,7 @@ import util.WindowManager;
  */
 public class Main extends javax.swing.JFrame {
     WindowManager windowManager;         // gerenciador de janelas
-    public static Properties props;
+    public static PropertiesManager propsManager;
 
     /**
      * Creates new form Main
@@ -27,21 +26,22 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH); // iniciar maximizado
+        
         windowManager = new WindowManager(jDesktopPane1);
         
         // carrega os arquivo de configurações config.properties        
-        FileInputStream fis = null;
-            try {
-                props = new Properties();
-                fis = new FileInputStream("config.properties");
-                props.load(fis);
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Falha ao abrir o arquivo de configurações.");
-                System.exit(0);
+        try {
+            propsManager = new PropertiesManager("config.properties");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao abrir o arquivo de configurações.");
+            System.exit(0);
         }
-            
-            props.setProperty("prop.serialPort", "teste!!");
         
+        if ((propsManager.getProperty("props.serialPort")).equals("")) {
+            JOptionPane.showMessageDialog(null, "Porta serial não configurada.");
+        }
+         
+  
     }
 
     /**
@@ -73,8 +73,10 @@ public class Main extends javax.swing.JFrame {
         jMenuItemPOP = new javax.swing.JMenuItem();
         jMenuRelatorio = new javax.swing.JMenu();
         jMenuConfig = new javax.swing.JMenu();
-        jMenuItemComm = new javax.swing.JMenuItem();
-        jMenuItemGeral = new javax.swing.JMenuItem();
+        jMenuItemConfigComm = new javax.swing.JMenuItem();
+        jMenuItemConfigGeral = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemConfigDebug = new javax.swing.JMenuItem();
         jMenuAjuda = new javax.swing.JMenu();
         jMenuItemManual = new javax.swing.JMenuItem();
         jMenuItemSobre = new javax.swing.JMenuItem();
@@ -167,21 +169,30 @@ public class Main extends javax.swing.JFrame {
 
         jMenuConfig.setText("Configurações");
 
-        jMenuItemComm.setText("Comunicação");
-        jMenuItemComm.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemConfigComm.setText("Comunicação");
+        jMenuItemConfigComm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCommActionPerformed(evt);
+                jMenuItemConfigCommActionPerformed(evt);
             }
         });
-        jMenuConfig.add(jMenuItemComm);
+        jMenuConfig.add(jMenuItemConfigComm);
 
-        jMenuItemGeral.setText("Geral");
-        jMenuItemGeral.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemConfigGeral.setText("Geral");
+        jMenuItemConfigGeral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemGeralActionPerformed(evt);
+                jMenuItemConfigGeralActionPerformed(evt);
             }
         });
-        jMenuConfig.add(jMenuItemGeral);
+        jMenuConfig.add(jMenuItemConfigGeral);
+        jMenuConfig.add(jSeparator3);
+
+        jMenuItemConfigDebug.setText("Debug");
+        jMenuItemConfigDebug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConfigDebugActionPerformed(evt);
+            }
+        });
+        jMenuConfig.add(jMenuItemConfigDebug);
 
         jMenuBar1.add(jMenuConfig);
 
@@ -202,7 +213,7 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jDesktopPane1)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,13 +248,17 @@ public class Main extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_formWindowClosing
 
-    private void jMenuItemGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGeralActionPerformed
+    private void jMenuItemConfigGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigGeralActionPerformed
        //windowManager.openWindow(JInternalFrameConfigGeral.getInstance());
-    }//GEN-LAST:event_jMenuItemGeralActionPerformed
+    }//GEN-LAST:event_jMenuItemConfigGeralActionPerformed
 
-    private void jMenuItemCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCommActionPerformed
+    private void jMenuItemConfigCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigCommActionPerformed
         windowManager.openWindow(JInternalFrameConfigComm.getInstance());
-    }//GEN-LAST:event_jMenuItemCommActionPerformed
+    }//GEN-LAST:event_jMenuItemConfigCommActionPerformed
+
+    private void jMenuItemConfigDebugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigDebugActionPerformed
+        windowManager.openWindow(JInternalFrameConfigDebug.getInstance());
+    }//GEN-LAST:event_jMenuItemConfigDebugActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,9 +324,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAbrirQ;
     private javax.swing.JMenuItem jMenuItemCiclos;
     private javax.swing.JMenuItem jMenuItemCliente;
-    private javax.swing.JMenuItem jMenuItemComm;
+    private javax.swing.JMenuItem jMenuItemConfigComm;
+    private javax.swing.JMenuItem jMenuItemConfigDebug;
+    private javax.swing.JMenuItem jMenuItemConfigGeral;
     private javax.swing.JMenuItem jMenuItemEquipamento;
-    private javax.swing.JMenuItem jMenuItemGeral;
     private javax.swing.JMenuItem jMenuItemLogotipo;
     private javax.swing.JMenuItem jMenuItemManual;
     private javax.swing.JMenuItem jMenuItemNovaQ;
@@ -325,6 +341,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

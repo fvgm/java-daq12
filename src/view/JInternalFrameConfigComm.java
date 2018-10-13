@@ -6,6 +6,8 @@
 package view;
 
 import com.fazecast.jSerialComm.*;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,7 +45,7 @@ public class JInternalFrameConfigComm extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        fecharButton = new javax.swing.JButton();
+        cancelarButton = new javax.swing.JButton();
         salvarButton = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
@@ -53,10 +55,10 @@ public class JInternalFrameConfigComm extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Porta Serial:");
 
-        fecharButton.setText("Fechar");
-        fecharButton.addActionListener(new java.awt.event.ActionListener() {
+        cancelarButton.setText("Cancelar");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fecharButtonActionPerformed(evt);
+                cancelarButtonActionPerformed(evt);
             }
         });
 
@@ -91,10 +93,10 @@ public class JInternalFrameConfigComm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 226, Short.MAX_VALUE)
+                        .addGap(0, 206, Short.MAX_VALUE)
                         .addComponent(salvarButton)
                         .addGap(18, 18, 18)
-                        .addComponent(fecharButton)
+                        .addComponent(cancelarButton)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +105,7 @@ public class JInternalFrameConfigComm extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fecharButton, salvarButton});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelarButton, salvarButton});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +116,7 @@ public class JInternalFrameConfigComm extends javax.swing.JInternalFrame {
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecharButton)
+                    .addComponent(cancelarButton)
                     .addComponent(salvarButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -134,21 +136,25 @@ public class JInternalFrameConfigComm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
-        
+        try {
+            Main.propsManager.setProperty("props.serialPort",jComboBox1.getSelectedItem().toString());
+            JOptionPane.showMessageDialog(null, "Configurações gravadas com sucesso!");
+            this.dispose();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao salvar as configurações.");
+        }
     }//GEN-LAST:event_salvarButtonActionPerformed
 
-    private void fecharButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharButtonActionPerformed
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.dispose(); // fecha o internal frame.
-    }//GEN-LAST:event_fecharButtonActionPerformed
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
- 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton fecharButton;
+    private javax.swing.JButton cancelarButton;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
