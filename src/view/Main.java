@@ -57,8 +57,8 @@ public class Main extends javax.swing.JFrame {
         jMenuItemPOP = new javax.swing.JMenuItem();
         jMenuRelatorio = new javax.swing.JMenu();
         jMenuConfig = new javax.swing.JMenu();
-        jMenuItemGerla = new javax.swing.JMenuItem();
-        jMenuItemVis = new javax.swing.JMenuItem();
+        jMenuItemComm = new javax.swing.JMenuItem();
+        jMenuItemGeral = new javax.swing.JMenuItem();
         jMenuAjuda = new javax.swing.JMenu();
         jMenuItemManual = new javax.swing.JMenuItem();
         jMenuItemSobre = new javax.swing.JMenuItem();
@@ -151,11 +151,21 @@ public class Main extends javax.swing.JFrame {
 
         jMenuConfig.setText("Configurações");
 
-        jMenuItemGerla.setText("Geral");
-        jMenuConfig.add(jMenuItemGerla);
+        jMenuItemComm.setText("Comunicação");
+        jMenuItemComm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCommActionPerformed(evt);
+            }
+        });
+        jMenuConfig.add(jMenuItemComm);
 
-        jMenuItemVis.setText("Visualização");
-        jMenuConfig.add(jMenuItemVis);
+        jMenuItemGeral.setText("Geral");
+        jMenuItemGeral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGeralActionPerformed(evt);
+            }
+        });
+        jMenuConfig.add(jMenuItemGeral);
 
         jMenuBar1.add(jMenuConfig);
 
@@ -210,6 +220,14 @@ public class Main extends javax.swing.JFrame {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);  
        }
     }//GEN-LAST:event_formWindowClosing
+
+    private void jMenuItemGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGeralActionPerformed
+       //windowManager.openWindow(JInternalFrameConfigGeral.getInstance());
+    }//GEN-LAST:event_jMenuItemGeralActionPerformed
+
+    private void jMenuItemCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCommActionPerformed
+        windowManager.openWindow(JInternalFrameConfigComm.getInstance());
+    }//GEN-LAST:event_jMenuItemCommActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,8 +293,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAbrirQ;
     private javax.swing.JMenuItem jMenuItemCiclos;
     private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemComm;
     private javax.swing.JMenuItem jMenuItemEquipamento;
-    private javax.swing.JMenuItem jMenuItemGerla;
+    private javax.swing.JMenuItem jMenuItemGeral;
     private javax.swing.JMenuItem jMenuItemLogotipo;
     private javax.swing.JMenuItem jMenuItemManual;
     private javax.swing.JMenuItem jMenuItemNovaQ;
@@ -285,7 +304,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemSobre;
     private javax.swing.JMenuItem jMenuItemTecnicoExec;
-    private javax.swing.JMenuItem jMenuItemVis;
     private javax.swing.JMenu jMenuQualificacao;
     private javax.swing.JMenu jMenuRelatorio;
     private javax.swing.JScrollPane jScrollPane1;

@@ -20,6 +20,7 @@ public class JInternalFrameCliente extends javax.swing.JInternalFrame {
     private static JInternalFrameCliente frameCliente;
     ClienteDAO clienteDAO;
     
+    // método customizado
     public static JInternalFrameCliente getInstance() {
         if (frameCliente == null) {
             frameCliente = new JInternalFrameCliente();
