@@ -5,8 +5,9 @@
  */
 package view;
 
-import factory.ConnectionFactory;
-import java.sql.Connection;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -17,7 +18,8 @@ import util.WindowManager;
  * @author fernando_2
  */
 public class Main extends javax.swing.JFrame {
-    WindowManager windowManager; // gerenciador de janelas
+    WindowManager windowManager;         // gerenciador de janelas
+    public static Properties props;
 
     /**
      * Creates new form Main
@@ -26,6 +28,20 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH); // iniciar maximizado
         windowManager = new WindowManager(jDesktopPane1);
+        
+        // carrega os arquivo de configurações config.properties        
+        FileInputStream fis = null;
+            try {
+                props = new Properties();
+                fis = new FileInputStream("config.properties");
+                props.load(fis);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Falha ao abrir o arquivo de configurações.");
+                System.exit(0);
+        }
+            
+            props.setProperty("prop.serialPort", "teste!!");
+        
     }
 
     /**
