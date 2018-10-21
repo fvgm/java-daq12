@@ -150,7 +150,7 @@ public class JInternalFrameConfigComm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+  
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

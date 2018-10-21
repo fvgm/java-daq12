@@ -5,6 +5,10 @@
  */
 package view;
 
+import com.ghgande.j2mod.modbus.ModbusException;
+import com.ghgande.j2mod.modbus.facade.ModbusSerialMaster;
+import com.ghgande.j2mod.modbus.procimg.InputRegister;
+import com.ghgande.j2mod.modbus.util.SerialParameters;
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,8 +23,8 @@ import util.WindowManager;
 public class Main extends javax.swing.JFrame {
     WindowManager windowManager;         // gerenciador de janelas
     public static PropertiesManager propsManager;
-
-    /**
+    
+     /**
      * Creates new form Main
      */
     public Main() {
@@ -40,8 +44,8 @@ public class Main extends javax.swing.JFrame {
         if ((propsManager.getProperty("props.serialPort")).equals("")) {
             JOptionPane.showMessageDialog(null, "Porta serial não configurada.");
         }
-         
-  
+        
+
     }
 
     /**
