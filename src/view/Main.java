@@ -5,10 +5,16 @@
  */
 package view;
 
+import com.intelligt.modbus.jlibmodbus.exception.ModbusIOException;
+import com.intelligt.modbus.jlibmodbus.serial.SerialPortException;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import model.ModbusServer;
 import util.PropertiesManager;
 import util.WindowManager;
 
@@ -19,6 +25,13 @@ import util.WindowManager;
 public class Main extends javax.swing.JFrame {
     WindowManager windowManager;         // gerenciador de janelas
     public static PropertiesManager propsManager;
+    
+    ModbusServer modbusServer;
+    Timer timer;
+    TimerTask tarefa;
+    final long segundos = (1 * 1000);
+    String serialPort;
+    
     
      /**
      * Creates new form Main
@@ -32,15 +45,46 @@ public class Main extends javax.swing.JFrame {
         // carrega os arquivo de configurações config.properties        
         try {
             propsManager = new PropertiesManager("config.properties");
+            serialPort = propsManager.getProperty("props.serialPort");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao abrir o arquivo de configurações.");
             System.exit(0);
         }
         
-        if ((propsManager.getProperty("props.serialPort")).equals("")) {
+        if (serialPort.equals("")) {
             JOptionPane.showMessageDialog(null, "Porta serial não configurada.");
         }
         
+ 
+        modbusServer = new ModbusServer(serialPort);
+        try {
+            modbusServer.connect();
+        } catch (SerialPortException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao abrir " + serialPort);
+            System.exit(0);
+        } catch (ModbusIOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha: " + ex.getMessage());
+            System.exit(0);   
+        }
+        
+        
+        timer = new Timer();
+        
+        tarefa = new TimerTask() {
+            @Override
+            public void run() {
+                try { 
+                    modbusServer.debug();
+                    modbusServer.update();
+                    System.out.println("Temp: " + modbusServer.getTemp());
+                } catch (Exception ex) {
+                   JOptionPane.showMessageDialog(null, "Falha: " + ex.getMessage());
+                    System.exit(0); 
+                }
+            }
+        };
+        
+        timer.scheduleAtFixedRate(tarefa, 0, segundos);
 
     }
 
@@ -294,6 +338,7 @@ public class Main extends javax.swing.JFrame {
                 new Main().setVisible(true);
             }
         });
+ 
     }
     
     private Boolean promptBeforeExiting() {
