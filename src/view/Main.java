@@ -5,10 +5,6 @@
  */
 package view;
 
-import com.ghgande.j2mod.modbus.ModbusException;
-import com.ghgande.j2mod.modbus.facade.ModbusSerialMaster;
-import com.ghgande.j2mod.modbus.procimg.InputRegister;
-import com.ghgande.j2mod.modbus.util.SerialParameters;
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
