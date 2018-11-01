@@ -16,6 +16,7 @@ import com.intelligt.modbus.jlibmodbus.serial.SerialPortException;
 import com.intelligt.modbus.jlibmodbus.serial.SerialPortFactoryJSerialComm;
 import com.intelligt.modbus.jlibmodbus.serial.SerialUtils;
 import java.util.Date;
+import java.util.List;
 import java.util.Observable;
 
 /**
@@ -24,6 +25,7 @@ import java.util.Observable;
  */
 public class ModbusServer extends Observable {
     private SerialParameters sp;
+    
     ModbusMaster m;
     private int slaveId;
     private int[] inputRegisters;
@@ -50,21 +52,21 @@ public class ModbusServer extends Observable {
         m.connect();
     }
     
-    public void update() throws ModbusProtocolException, ModbusNumberException, ModbusIOException {
-        inputRegisters = m.readInputRegisters(slaveId, 0, 2);
-        int combined = (inputRegisters[0]<<16) | inputRegisters[1];
-        temperatura = Float.intBitsToFloat(combined);
-        
-        setChanged();
-        notifyObservers();
-    }
-    
     public float getTemp() {
         return temperatura;
     }
     
     public void debug() {
         System.out.println("rodando.." + new Date());
+    }
+    
+    public void update() throws ModbusProtocolException, ModbusNumberException, ModbusIOException {
+        inputRegisters = m.readInputRegisters(slaveId, 0, 2);
+        int combined = (inputRegisters[0]<<16) | inputRegisters[1];
+        temperatura = Float.intBitsToFloat(combined);
+
+        setChanged();
+        notifyObservers(Float.toString(temperatura)); // argumento é passado para os observers
     }
     
 

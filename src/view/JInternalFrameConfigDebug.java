@@ -5,11 +5,14 @@
  */
 package view;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  *
  * @author FernandoMagro
  */
-public class JInternalFrameConfigDebug extends javax.swing.JInternalFrame {
+public class JInternalFrameConfigDebug extends javax.swing.JInternalFrame implements Observer {
     
      // itens necessários para o WindowManager
     private static JInternalFrameConfigDebug frameConfigDebug;
@@ -25,7 +28,6 @@ public class JInternalFrameConfigDebug extends javax.swing.JInternalFrame {
      * Creates new form JInternalFrameCliente
      */
     public JInternalFrameConfigDebug() {
-        
         initComponents();
     }
 
@@ -331,4 +333,9 @@ public class JInternalFrameConfigDebug extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        jTextField1.setText((String) arg); // traz a temperatura do observable
+    }
 }

@@ -48,7 +48,6 @@ public class Main extends javax.swing.JFrame {
             serialPort = propsManager.getProperty("props.serialPort");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao abrir o arquivo de configurações.");
-            System.exit(0);
         }
         
         if (serialPort.equals("")) {
@@ -57,35 +56,31 @@ public class Main extends javax.swing.JFrame {
         
  
         modbusServer = new ModbusServer(serialPort);
+        
         try {
             modbusServer.connect();
+            System.out.println("não gerou exceção!");
         } catch (SerialPortException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao abrir " + serialPort);
-            System.exit(0);
         } catch (ModbusIOException ex) {
             JOptionPane.showMessageDialog(null, "Falha: " + ex.getMessage());
-            System.exit(0);   
-        }
-        
-        
+        } 
+          
         timer = new Timer();
-        
-        tarefa = new TimerTask() {
-            @Override
-            public void run() {
-                try { 
-                    modbusServer.debug();
-                    modbusServer.update();
-                    System.out.println("Temp: " + modbusServer.getTemp());
-                } catch (Exception ex) {
-                   JOptionPane.showMessageDialog(null, "Falha: " + ex.getMessage());
-                    System.exit(0); 
-                }
-            }
-        };
-        
-        timer.scheduleAtFixedRate(tarefa, 0, segundos);
 
+            tarefa = new TimerTask() {
+                @Override
+                public void run() {
+                    try { 
+                        modbusServer.debug();
+                        modbusServer.update();
+                        System.out.println("Temp: " + modbusServer.getTemp());
+                    } catch (Exception ex) {
+                       JOptionPane.showMessageDialog(null, "Falha timerTask: " + ex.getMessage());
+                    }
+                }
+            };
+        timer.scheduleAtFixedRate(tarefa, 0, segundos);
     }
 
     /**
@@ -302,6 +297,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItemConfigDebugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigDebugActionPerformed
         windowManager.openWindow(JInternalFrameConfigDebug.getInstance());
+        modbusServer.addObserver(JInternalFrameConfigDebug.getInstance());
     }//GEN-LAST:event_jMenuItemConfigDebugActionPerformed
 
     /**
